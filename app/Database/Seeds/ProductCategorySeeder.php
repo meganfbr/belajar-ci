@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Database\Seeds;  // Make sure this is Seeds, not Migrations
+namespace App\Database\Seeds; 
 
 use CodeIgniter\Database\Seeder;
 
