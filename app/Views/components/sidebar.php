@@ -16,7 +16,13 @@
                 <span>Keranjang</span>
             </a>
         </li>
-        <!-- End Keranjang Nav -->
+                <!-- End Keranjang Nav -->
+        <li class="nav-item">
+            <a class="nav-link <?php echo (uri_string() == 'product-category') ? "" : "collapsed" ?>" href="<?= base_url('product-category') ?>">
+                <i class="bi bi-tags"></i> <!-- Ganti icon yang lebih sesuai -->
+                <span>Kategori Produk</span>
+            </a>
+        </li>
 
         <?php
         if (session()->get('role') == 'admin') {

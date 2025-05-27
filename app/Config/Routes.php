@@ -20,6 +20,15 @@ $routes->group('produk', ['filter' => 'auth'], function ($routes) {
     $routes->get('delete/(:any)', 'ProdukController::delete/$1');
 });
 
+$routes->group('product-category', ['filter' => 'auth'], function ($routes) {
+    $routes->get('', 'ProdukCategoryController::index');
+    $routes->post('', 'ProdukCategoryController::store');  // ubah dari 'store' ke ''
+    $routes->post('edit/(:num)', 'ProdukCategoryController::edit/$1');
+    $routes->get('delete/(:num)', 'ProdukCategoryController::delete/$1');
+});
+
+$routes->get('product-category', 'ProdukCategoryController::index', ['as' => 'product-category']);
+
 $routes->get('keranjang', 'TransaksiController::index', ['filter' => 'auth']);
 
 $routes->get('contact', 'FaqController::index', ['filter' => 'auth']);

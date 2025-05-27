@@ -1,72 +1,60 @@
 <?php
 
-namespace App\Database\Seeds; 
+namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 
-class ProductCategorySeeder extends Seeder
+class ProdukCategorySeeder extends Seeder
 {
     public function run()
     {
+        $this->db->table('product_categories')->truncate();
+
         $data = [
             [
-                'name' => 'Furniture',
-                'slug' => 'furniture',
-                'description' => 'All furniture products',
+                'name' => 'Electronics',
+                'slug' => 'electronics',
+                'description' => 'All electronic products',
                 'parent_id' => null,
                 'is_active' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Living Room',
-                'slug' => 'living-room',
-                'description' => 'Living room furniture',
-                'parent_id' => 1, // Assuming Furniture is ID 1
+                'name' => 'Laptops',
+                'slug' => 'laptops',
+                'description' => 'Various laptop models',
+                'parent_id' => 1, // Anak dari Electronics
                 'is_active' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Bedroom',
-                'slug' => 'bedroom',
-                'description' => 'Bedroom furniture',
-                'parent_id' => 1,
+                'name' => 'Printers',
+                'slug' => 'printers',
+                'description' => 'All printer types',
+                'parent_id' => 1, // Anak dari Electronics
                 'is_active' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Dining Room',
-                'slug' => 'dining-room',
-                'description' => 'Dining room furniture',
-                'parent_id' => 1,
+                'name' => 'Keyboards',
+                'slug' => 'keyboards',
+                'description' => 'Computer keyboards',
+                'parent_id' => 1, // Anak dari Electronics
                 'is_active' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Office',
-                'slug' => 'office',
-                'description' => 'Office furniture',
-                'parent_id' => 1,
+                'name' => 'Furniture',
+                'slug' => 'furniture',
+                'description' => 'Office and home furniture',
+                'parent_id' => null, // Kategori utama
                 'is_active' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
             ],
-            [
-                'name' => 'Sofas',
-                'slug' => 'sofas',
-                'description' => 'Comfortable sofas for your living room',
-                'parent_id' => 2, // Living Room
-                'is_active' => 1,
-                'created_at' => date('Y-m-d H:i:s'),
-            ],
-            [
-                'name' => 'Beds',
-                'slug' => 'beds',
-                'description' => 'Comfortable beds for your bedroom',
-                'parent_id' => 3, // Bedroom
-                'is_active' => 1,
-                'created_at' => date('Y-m-d H:i:s'),
-            ],
+ 
         ];
 
-        $this->db->table('product_categories')->insertBatch($data);
+        // Gunakan ignore(true) untuk melewati error duplikat (jika ada)
+        $this->db->table('product_categories')->ignore(true)->insertBatch($data);
     }
 }
