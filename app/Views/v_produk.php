@@ -21,8 +21,12 @@
     <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#addModal">
         Tambah Data
     </button>
+    <a type="button" class="btn btn-success" href="<?=base_url()?>produk/download">
+        Download data
+    </a>
     <div class="datatable-search"></div>
 </div>
+
 
 <!-- Tabel Produk -->
 <table class="table datatable">
