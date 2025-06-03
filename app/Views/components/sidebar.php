@@ -24,7 +24,18 @@
                     <i class="bi bi-receipt"></i>
                     <span>Produk</span>
                 </a>
-            </li><!-- End Produk Nav -->
+            </li><!-- End Product Nav -->
+            <a class="nav-link <?= (uri_string() == 'kategori-produk') ? '' : 'collapsed' ?>" href="/kategori-produk">
+                <i class="bi bi-tags"></i>
+                <span>Kategori Produk</span>
+            </a>
+            <!-- End Product Category Nav -->
+            <li class="nav-item"></li>
+            <a class="nav-link <?php echo (uri_string() == 'faq') ? "" : "collapsed" ?>" href="faq">
+                <i class="bi bi-question-circle"></i>
+                <span>F.A.Q</span>
+            </a>
+            </li>
         <?php
         }
         ?>

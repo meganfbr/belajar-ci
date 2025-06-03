@@ -2,10 +2,24 @@
 
 namespace App\Controllers;
 
+use App\Models\ProductModel; 
+use App\Models\ProducCategorytModel; 
+
 class Home extends BaseController
 {
-    public function index(): string
+     protected $product;
+
+     function __construct()
+     {
+        helper('form');
+        helper('number');
+        $this->product = new ProductModel();
+     }
+    public function index()
     {
-        return view('v_home');
+        $product = $this->product->findAll();
+        $data['product'] = $product;
+
+        return view('v_home', $data);
     }
 }
