@@ -24,6 +24,7 @@
     <a type="button" class="btn btn-success" href="<?=base_url()?>produk/download">
         Download data
     </a>
+
     <div class="datatable-search"></div>
 </div>
 
@@ -36,7 +37,7 @@
             <th>Nama</th>
             <th>Harga</th>
             <th>Jumlah</th>
-            <th>Foto</th>
+         <th>Foto</th>
             <th>Aksi</th>
         </tr>
     </thead>
