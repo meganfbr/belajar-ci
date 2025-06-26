@@ -24,6 +24,8 @@ if(uri_string()!=""){
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+
+  
   <!-- Vendor CSS Files -->
   <link href=" <?= base_url()?>NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href=" <?= base_url()?>NiceAdmin/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -90,6 +92,14 @@ if(uri_string()!=""){
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+  <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Select2 -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+
   <!-- Vendor JS Files -->
   <script src=" <?= base_url()?>NiceAdmin/assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src=" <?= base_url()?>NiceAdmin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -102,7 +112,7 @@ if(uri_string()!=""){
 
   <!-- Template Main JS File -->
   <script src=" <?= base_url()?>NiceAdmin/assets/js/main.js"></script>
-
+    <?= $this->renderSection('script') ?> 
 </body>
 
 </html>
