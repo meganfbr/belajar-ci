@@ -3,26 +3,40 @@
 <div class="d-flex align-items-center justify-content-between">
   <a href="index.html" class="logo d-flex align-items-center">
     <img src="<?= base_url()?>NiceAdmin/assets/img/logo.png" alt="">
-    <span class="d-none d-lg-block">Toko</span>
+    <span class="d-none d-lg-block">TOSMART</span>
   </a>
   <i class="bi bi-list toggle-sidebar-btn"></i>
 </div><!-- End Logo -->
 
-<div class="search-bar">
-  <form class="search-form d-flex align-items-center" method="POST" action="#">
-    <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-    <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-  </form>
-</div><!-- End Search Bar -->
+  <div class="search-bar d-flex align-items-center">
+    <form class="search-form d-flex align-items-center" method="POST" action="#">
+      <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+      <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+    </form>
+
+    <?php if (session()->has('diskon_nominal')) : ?>
+      <span class="badge bg-success ms-3">
+        <i class="bi bi-cash-coin"></i>
+        Diskon Hari Ini: Rp <?= number_format(session()->get('diskon_nominal'), 0, ',', '.'); ?>
+      </span>
+    <?php endif; ?>
+  </div><!-- End Search Bar -->
+
 
 <nav class="header-nav ms-auto">
   <ul class="d-flex align-items-center">
 
     <li class="nav-item d-block d-lg-none">
       <a class="nav-link nav-icon search-bar-toggle " href="#">
-        <i class="bi bi-search"></i>
+        <i class="bi bi-search"></i>c
       </a>
     </li><!-- End Search Icon-->
+    <!-- <?php if (session()->has('diskon_nominal')) : ?>
+    <div class="ms-3">
+      <span class="badge bg-success">Diskon Hari Ini: Rp <?= number_format(session()->get('diskon_nominal'), 0, ',', '.'); ?></span>
+    </div> -->
+  <?php endif; ?>
+
 
     <li class="nav-item dropdown">
 

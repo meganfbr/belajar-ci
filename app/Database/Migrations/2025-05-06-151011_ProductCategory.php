@@ -70,8 +70,8 @@ class ProductCategory extends Migration
         ]);
 
         $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('parent_id', 'product_categories', 'id', 'CASCADE', 'SET NULL');
-        $this->forge->createTable('product_categories');
+        $this->forge->addForeignKey('parent_id', 'product_category', 'id', 'CASCADE', 'SET NULL');
+        $this->forge->createTable('product_category');
 
         // Seed some furniture categories
         $seeder = \Config\Database::seeder();
@@ -80,6 +80,6 @@ class ProductCategory extends Migration
 
     public function down()
     {
-        $this->forge->dropTable('product_categories', true);
+        $this->forge->dropTable('product_category', true);
     }
 }

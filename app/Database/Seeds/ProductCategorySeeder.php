@@ -4,57 +4,42 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 
-class ProdukCategorySeeder extends Seeder
+class ProductCategorySeeder extends Seeder
 {
     public function run()
     {
-        $this->db->table('product_categories')->truncate();
+        $this->db->query('DELETE FROM product_category');
+        $this->db->query('ALTER TABLE product_category AUTO_INCREMENT = 1');
 
         $data = [
-            [
-                'name' => 'Electronics',
-                'slug' => 'electronics',
-                'description' => 'All electronic products',
-                'parent_id' => null,
-                'is_active' => 1,
+             [
+                'kategori' => 'Electronics',
                 'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Laptops',
-                'slug' => 'laptops',
-                'description' => 'Various laptop models',
-                'parent_id' => 1, // Anak dari Electronics
-                'is_active' => 1,
+                'kategori' => 'Laptops',
                 'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Printers',
-                'slug' => 'printers',
-                'description' => 'All printer types',
-                'parent_id' => 1, // Anak dari Electronics
-                'is_active' => 1,
+                'kategori' => 'Printers',
                 'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Keyboards',
-                'slug' => 'keyboards',
-                'description' => 'Computer keyboards',
-                'parent_id' => 1, // Anak dari Electronics
-                'is_active' => 1,
+                'kategori' => 'Keyboards',
                 'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Furniture',
-                'slug' => 'furniture',
-                'description' => 'Office and home furniture',
-                'parent_id' => null, // Kategori utama
-                'is_active' => 1,
+                'kategori' => 'Furniture',
                 'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
- 
         ];
 
         // Gunakan ignore(true) untuk melewati error duplikat (jika ada)
-        $this->db->table('product_categories')->ignore(true)->insertBatch($data);
+        $this->db->table('product_category')->ignore(true)->insertBatch($data);
     }
 }

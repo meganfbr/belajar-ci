@@ -27,9 +27,7 @@ class ProdukCategoryController extends BaseController
     public function store()
     {
         $rules = [
-            'name' => 'required|min_length[3]|max_length[255]',
-            'description' => 'permit_empty|max_length[500]',
-            'is_active' => 'required|in_list[0,1]'
+            'kategori' => 'required|min_length[3]|max_length[100]',
         ];
         
         if (!$this->validate($rules)) {
@@ -37,11 +35,7 @@ class ProdukCategoryController extends BaseController
         }
         
         $data = [
-            'name' => $this->request->getPost('name'),
-            'slug' => url_title($this->request->getPost('name'), '-', true),
-            'description' => $this->request->getPost('description'),
-            'is_active' => $this->request->getPost('is_active'),
-            'parent_id' => $this->request->getPost('parent_id') ?? null
+            'kategori' => $this->request->getPost('kategori'),
         ];
         
         if ($this->model->save($data)) {
@@ -54,9 +48,7 @@ class ProdukCategoryController extends BaseController
     public function edit($id)
     {
         $rules = [
-            'name' => 'required|min_length[3]|max_length[255]',
-            'description' => 'permit_empty|max_length[500]',
-            'is_active' => 'required|in_list[0,1]'
+            'kategori' => 'required|min_length[3]|max_length[100]',
         ];
         
         if (!$this->validate($rules)) {
@@ -64,11 +56,7 @@ class ProdukCategoryController extends BaseController
         }
         
         $data = [
-            'name' => $this->request->getPost('name'),
-            'slug' => url_title($this->request->getPost('name'), '-', true),
-            'description' => $this->request->getPost('description'),
-            'is_active' => $this->request->getPost('is_active'),
-            'parent_id' => $this->request->getPost('parent_id') ?? null
+            'kategori' => $this->request->getPost('kategori'),
         ];
         
         if ($this->model->update($id, $data)) {

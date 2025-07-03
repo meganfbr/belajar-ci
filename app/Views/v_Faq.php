@@ -1,5 +1,5 @@
 <?= $this->extend('layout') ?>
 <?= $this->section('content') ?>
 
-ini halaman fak
+ini halaman F.A.Q
 <?= $this->endSection() ?>

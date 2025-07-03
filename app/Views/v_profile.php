@@ -4,17 +4,16 @@
 <hr>
 
 <div class="table-responsive">
-    <!-- Table with stripped rows -->
     <table class="table datatable">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">ID Pembelian</th>
-                <th scope="col">Waktu Pembelian</th>
-                <th scope="col">Total Bayar</th>
-                <th scope="col">Alamat</th>
-                <th scope="col">Status</th>
-                <th scope="col"></th>
+                <th>#</th>
+                <th>ID Pembelian</th>
+                <th>Waktu Pembelian</th>
+                <th>Total Bayar</th>
+                <th>Alamat</th>
+                <th>Status</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -39,52 +38,51 @@
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="detailModalLabel">Detail Transaksi #<?= esc($item['id']) ?></h5>
+                                    <h5 class="modal-title">Detail Transaksi #<?= esc($item['id']) ?></h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <?php if (!empty($product) && isset($product[$item['id']])) : ?>
                                         <?php foreach ($product[$item['id']] as $index2 => $item2) : ?>
-                                            <div class="product-item">
+                                            <div class="product-item mb-3">
                                                 <div class="product-index">
                                                     <strong><?= esc($index2 + 1) . ")" ?></strong>
                                                 </div>
 
-                                                <!-- Cek apakah foto produk ada -->
-                                                <?php if (!empty($item2['foto']) && file_exists("img/" . $item2['foto'])) : ?>
-                                                    <div class="product-image">
-                                                        <img src="<?= base_url("img/" . esc($item2['foto'])) ?>" width="100px" alt="<?= esc($item2['nama']) ?>" />
+                                                <?php
+                                                $foto = $item2['foto'] ?? '';
+                                                $fotoPath = FCPATH . 'img/' . $foto;
+                                                ?>
+
+                                                <?php if (!empty($foto) && file_exists($fotoPath)) : ?>
+                                                    <div class="product-image mb-2">
+                                                        <img src="<?= base_url('img/' . esc($foto)) ?>" width="100px" alt="<?= esc($item2['nama']) ?>" />
                                                     </div>
+                                                <?php else : ?>
+                                                    <p><em>Gambar tidak tersedia</em></p>
                                                 <?php endif; ?>
 
                                                 <div class="product-details">
-                                                    <div class="product-name">
-                                                        <strong><?= esc($item2['nama']) ?></strong>
-                                                    </div>
-                                                    <div class="product-price">
-                                                        <?= number_to_currency($item2['harga'], 'IDR') ?>
-                                                    </div>
-                                                    <div class="product-quantity">
-                                                        <?= "(" . esc($item2['jumlah']) . " pcs)" ?>
-                                                    </div>
-                                                    <div class="product-subtotal">
-                                                        <?= number_to_currency($item2['subtotal_harga'], 'IDR') ?>
-                                                    </div>
+                                                    <div><strong><?= esc($item2['nama']) ?></strong></div>
+                                                    <div><?= number_to_currency($item2['harga'], 'IDR') ?> (<?= esc($item2['jumlah']) ?> pcs)</div>
+
+                                                    <?php
+                                                        $harga = $item2['harga'];
+                                                        $jumlah = $item2['jumlah'];
+                                                        $diskon = $item2['diskon'] ?? 0;
+                                                        $subtotal = ($harga - $diskon) * $jumlah;
+                                                    ?>
+                                                    <div>Subtotal: <?= number_to_currency($subtotal, 'IDR') ?></div>
                                                 </div>
 
                                                 <hr class="product-divider" />
                                             </div>
-
                                         <?php endforeach; ?>
                                     <?php else : ?>
                                         <p>Tidak ada produk untuk transaksi ini.</p>
                                     <?php endif; ?>
 
-                                    <!-- Penanganan Ongkir -->
-                                    <?php 
-                                    $ongkir = isset($item['ongkir']) ? $item['ongkir'] : 0;
-                                    ?>
-                                    <p><strong>Ongkir:</strong> <?= number_to_currency($ongkir, 'IDR') ?></p>
+                                    <p><strong>Ongkir:</strong> <?= number_to_currency($item['ongkir'] ?? 0, 'IDR') ?></p>
                                 </div>
                             </div>
                         </div>
@@ -99,7 +97,6 @@
             <?php endif; ?>
         </tbody>
     </table>
-    <!-- End Table with stripped rows -->
 </div>
 
 <?= $this->endSection() ?>

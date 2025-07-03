@@ -15,6 +15,12 @@ class Product extends Migration
                 'unsigned' => TRUE,
                 'auto_increment' => TRUE
             ],
+            'kategori_id' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'unsigned' => TRUE,
+                'null' => true,
+            ],
             'nama' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
@@ -32,22 +38,24 @@ class Product extends Migration
             'foto' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
+                'null' => TRUE,
             ],
             'created_at' => [
-                'type' => 'datetime',
+                'type' => 'DATETIME',
                 'null' => TRUE
             ],
             'updated_at' => [
-                'type' => 'datetime',
+                'type' => 'DATETIME',
                 'null' => TRUE
             ]
         ]);
 
         $this->forge->addKey('id', TRUE);
+        // Optional: add foreign key constraint
+        $this->forge->addForeignKey('kategori_id', 'product_category', 'id', 'CASCADE', 'CASCADE');
+
         $this->forge->createTable('product');
     }
-
-    //--------------------------------------------------------------------
 
     public function down()
     {
